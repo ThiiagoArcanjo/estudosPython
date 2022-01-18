@@ -4,7 +4,7 @@ Se o usuário informar o valor de A igual a zero, a equação não é de segundo
 e o programa não deve pedir os demais valores, sendo encerrado.
 Se o delta calculado for negativo a equação não possui valores reais. Informe ao usuário e encerre o programa
 Se o delta calculado for igual a zero a equação possui apenas uma raiz. Informe-a ao usuário
-Se o delta for positivo, a equação possi duas raizes; Informe-as ao usuário. -> Teste Pull
+Se o delta for positivo, a equação possi duas raizes; Informe-as ao usuário.
 '''
 print('\t\t *-* Programa Calculo de equação de segundo Grau *-*')
 a = float(input('Por favor, informe o valor para a'))
