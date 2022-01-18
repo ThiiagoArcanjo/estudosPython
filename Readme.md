@@ -1,0 +1,1 @@
+Nesse diretório encontram-se alguns programinhas com o intuito de aprender um pouco de python.
