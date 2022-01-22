@@ -6,19 +6,33 @@ Se o delta calculado for negativo a equação não possui valores reais. Informe
 Se o delta calculado for igual a zero a equação possui apenas uma raiz. Informe-a ao usuário
 Se o delta for positivo, a equação possi duas raizes; Informe-as ao usuário.
 '''
+
 from tkinter import *
+
 
 
 def equacaoSegundoGrau():
     print('\t\t *-* Programa Calculo de equação de segundo Grau *-*')
-    a = float(textBoxA.get("1.0", "end"))
+    try:
+       a = float(textBoxA.get("1.0", "end"))
+    except ValueError:
+        labelMensagemExtra["text"]="Por favor, digite um numero umero valido em A"
+        
 
     if(a == 0):
         print('Que chato! Infelizmente a equação não é de segundo grau')
         labelMensagemExtra["text"] = "Que chato! Infelizmente a equação não é de segundo gra"
     else:
-        b = float(textBoxB.get("1.0", "end"))
-        c = float(textBoxC.get("1.0", "end"))
+        try:
+            b = float(textBoxB.get("1.0", "end"))
+        except ValueError:
+            labelMensagemExtra["text"] = "Por favor, digite um número valido em B"
+        
+        try:
+            c = float(textBoxC.get("1.0", "end"))
+        except ValueError:
+             labelMensagemExtra["text"] = "Por favor, digite um número valido em C"
+
         delta = pow(b,2)-4* a*c
         print(f'Delta é: {delta}')
         labelDelta["text"] = "Delta: " +str(delta)
