@@ -6,57 +6,46 @@ Se o delta calculado for negativo a equação não possui valores reais. Informe
 Se o delta calculado for igual a zero a equação possui apenas uma raiz. Informe-a ao usuário
 Se o delta for positivo, a equação possi duas raizes; Informe-as ao usuário.
 '''
-
 from tkinter import *
-
-
 
 def equacaoSegundoGrau():
     print('\t\t *-* Programa Calculo de equação de segundo Grau *-*')
     try:
        a = float(textBoxA.get("1.0", "end"))
+       b = float(textBoxB.get("1.0", "end"))
+       c = float(textBoxC.get("1.0", "end"))
+       
+       if(a == 0):
+            print('Que chato! Infelizmente a equação não é de segundo grau')
+            labelMensagemExtra["text"] = "Que chato! Infelizmente a equação não é de segundo gra"
+       else:
+            delta = pow(b,2)-4* a*c
+            print(f'Delta é: {delta}')
+            labelDelta["text"] = "Delta: " +str(delta)
+        
+            if(delta < 0):
+                print('O delta possui um valor negativo, portanto não possui valores reais')
+                labelMensagemExtra["text"] ="O delta possui um valor negativo, portanto não possui valores reais"
+
+            elif(delta == 0):
+                x = (-b + (delta** (1/2))) / (2*a)
+                #or x = -b /(2*a)
+                print('O delta possui valor igual a zero, portanto possui apenas uma raiz')
+                print(f'\t\t O X é igual: {x} ')
+                labelMensagemExtra["text"] = "O delta possui valor igual a zero, portanto possui apenas uma raiz" 
+                labelResultado["text"] = f"O X é igual: {x}"
+                
+            else:
+                x1 = (-b + (delta** (1/2))) / (2*a)
+                x2 = (-b - (delta** (1/2))) / (2*a)
+                print('O delta possui um valor positivo maior que zero, portanto possui duas raizes')
+                print(f'\t\t X1 é igual: {x1} \n \t\t e X2 é igual a: {x2}') 
+                labelMensagemExtra["text"] = "O delta possui um valor positivo maior que zero, portanto possui duas raizes; "
+                labelResultado["text"] = f"X1 é igual: {x1} e X2 é igual a: {x2}"
+
     except ValueError:
-        labelMensagemExtra["text"]="Por favor, digite um numero umero valido em A"
+        labelMensagemExtra["text"]="Por favor, preencha todos os campos com números válidos"
         
-
-    if(a == 0):
-        print('Que chato! Infelizmente a equação não é de segundo grau')
-        labelMensagemExtra["text"] = "Que chato! Infelizmente a equação não é de segundo gra"
-    else:
-        try:
-            b = float(textBoxB.get("1.0", "end"))
-        except ValueError:
-            labelMensagemExtra["text"] = "Por favor, digite um número valido em B"
-        
-        try:
-            c = float(textBoxC.get("1.0", "end"))
-        except ValueError:
-             labelMensagemExtra["text"] = "Por favor, digite um número valido em C"
-
-        delta = pow(b,2)-4* a*c
-        print(f'Delta é: {delta}')
-        labelDelta["text"] = "Delta: " +str(delta)
-    
-        if(delta < 0):
-            print('O delta possui um valor negativo, portanto não possui valores reais')
-            labelMensagemExtra["text"] ="O delta possui um valor negativo, portanto não possui valores reais"
-
-        elif(delta == 0):
-            x = (-b + (delta** (1/2))) / (2*a)
-            #or x = -b /(2*a)
-            print('O delta possui valor igual a zero, portanto possui apenas uma raiz')
-            print(f'\t\t O X é igual: {x} ')
-            labelMensagemExtra["text"] = "O delta possui valor igual a zero, portanto possui apenas uma raiz" 
-            labelResultado["text"] = f"O X é igual: {x}"
-            
-        else:
-            x1 = (-b + (delta** (1/2))) / (2*a)
-            x2 = (-b - (delta** (1/2))) / (2*a)
-            print('O delta possui um valor positivo maior que zero, portanto possui duas raizes')
-            print(f'\t\t X1 é igual: {x1} \n \t\t e X2 é igual a: {x2}') 
-            labelMensagemExtra["text"] = "O delta possui um valor positivo maior que zero, portanto possui duas raizes; "
-            labelResultado["text"] = f"X1 é igual: {x1} e X2 é igual a: {x2}"
-
 #equacaoSegundoGrau(float(input("Por favor, digite a: ")),float(input("Por favor, digite b: ")), float(input("Por favor, digite c: "))) 
 
 #Criando uma janela
